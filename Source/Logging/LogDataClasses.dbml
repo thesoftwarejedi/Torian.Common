@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Pump" Class="LogDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=dbserv;Initial Catalog=Pump;Integrated Security=True" SettingsObjectName="Torian.Common.Properties.Settings" SettingsPropertyName="LogDbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.LogEntry" Member="LogEntries">
+    <Type Name="LogEntry">
+      <Column Name="LogId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Category" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Text" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LogLevel" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
