@@ -61,6 +61,33 @@ namespace Torian.Common.Extensions
             return FindOrCreate(table, find, a => { });
         }
 
+        public static T FindOrCreate<T, TOrderKey>(this EntitySet<T> table, Func<T, bool> find, Func<T, TOrderKey> order, bool desc, Action<T> create) where T : class, new()
+        {
+            T val = null;
+            val = desc ? table.OrderByDescending(order).FirstOrDefault(find) : table.OrderBy(order).FirstOrDefault(find);
+            if (val != null) return val;
+            val = new T();
+            create(val);
+            table.Add(val);
+            return val;
+        }
+
+        public static T FindOrCreate<T>(this EntitySet<T> table, Func<T, bool> find, Action<T> create) where T : class, new()
+        {
+            var val = table.FirstOrDefault(find);
+            if (val != null) return val;
+            val = new T();
+            create(val);
+            table.Add(val);
+            return val;
+        }
+
+
+        public static T FindOrCreate<T>(this EntitySet<T> table, Func<T, bool> find) where T : class, new()
+        {
+            return FindOrCreate(table, find, a => { });
+        }
+
         public static XElement ElementDeep(this XElement container, params XName[] names)
         {
             foreach (var name in names)
