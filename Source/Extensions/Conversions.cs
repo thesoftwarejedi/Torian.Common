@@ -8,7 +8,7 @@ using System.Globalization;
 namespace Torian.Common.Extensions
 {
 
-    public static class Conversions
+public static class Conversions
     {
 
         public static DateTime? DateTimeTryParseExact(this string input, string format, DateTime? defaultReturn)
@@ -51,8 +51,7 @@ namespace Torian.Common.Extensions
             }
         }
 
-        public static T ToOrDefault<T>
-                     (this IConvertible obj)
+        public static T To<T> (this IConvertible obj, T defaultVal = default(T))
         {
             try
             {
@@ -60,13 +59,11 @@ namespace Torian.Common.Extensions
             }
             catch
             {
-                return default(T);
+                return defaultVal;
             }
         }
 
-        public static bool ToOrDefault<T>
-                            (this IConvertible obj,
-                             out T newObj)
+        public static bool To<T> (this IConvertible obj, out T newObj, T defaultVal = default(T))
         {
             try
             {
@@ -75,69 +72,7 @@ namespace Torian.Common.Extensions
             }
             catch
             {
-                newObj = default(T);
-                return false;
-            }
-        }
-
-        public static T ToOrOther<T>
-                               (this IConvertible obj,
-                               T other)
-        {
-            try
-            {
-                return To<T>(obj);
-            }
-            catch
-            {
-                return other;
-            }
-        }
-
-        public static bool ToOrOther<T>
-                                 (this IConvertible obj,
-                                 out T newObj,
-                                 T other)
-        {
-            try
-            {
-                newObj = To<T>(obj);
-                return true;
-            }
-            catch
-            {
-                newObj = other;
-                return false;
-            }
-        }
-
-        public static T ToOrNull<T>
-                              (this IConvertible obj)
-                              where T : class
-        {
-            try
-            {
-                return To<T>(obj);
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public static bool ToOrNull<T>
-                          (this IConvertible obj,
-                          out T newObj)
-                          where T : class
-        {
-            try
-            {
-                newObj = To<T>(obj);
-                return true;
-            }
-            catch
-            {
-                newObj = null;
+                newObj = defaultVal;
                 return false;
             }
         }
