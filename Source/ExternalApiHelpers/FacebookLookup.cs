@@ -58,7 +58,7 @@ namespace Torian.Common.ExternalApiHelpers
             if (info == null) return null;
             string uid = info["uid"];
             if (uid == null) return null;
-            return uid.ToOrDefault<long?>();
+            return uid.To<long?>();
         }
 
         public static User GetFacebookUser()
