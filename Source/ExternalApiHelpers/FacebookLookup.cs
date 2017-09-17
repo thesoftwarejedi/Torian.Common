@@ -16,9 +16,9 @@ namespace Torian.Common.ExternalApiHelpers
     public class FacebookLookup
     {
 
-        private static string applicationKey = ConfigurationSettings.AppSettings.Get("ApiKey");
-        private static string secretKey = ConfigurationSettings.AppSettings.Get("Secret");
-        private static string appId = ConfigurationSettings.AppSettings.Get("AppId");
+        private static string applicationKey = ConfigurationManager.AppSettings.Get("ApiKey");
+        private static string secretKey = ConfigurationManager.AppSettings.Get("Secret");
+        private static string appId = ConfigurationManager.AppSettings.Get("AppId");
 
         public static string GetAccessToken()
         {

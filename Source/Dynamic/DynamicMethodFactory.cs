@@ -31,7 +31,6 @@ namespace Torian.Common.Dynamic.CodeGen {{
         public static Func<T1, T2, T3, T4, TResult> CreateMethod<T1, T2, T3, T4, TResult>(string innerCode, string arg1Name, string arg2Name, string arg3Name, string arg4Name)
         {
             CompilerParameters param = new CompilerParameters();
-            param.Evidence = AppDomain.CurrentDomain.Evidence;
             param.GenerateExecutable = false;
             param.GenerateInMemory = true;
             param.IncludeDebugInformation = false;
