@@ -10,6 +10,8 @@ namespace Torian.Common.Extensions
     public static class General
     {
 
+        public static TV GetValueOrDefault<TK, TV>(this IDictionary<TK, TV> dict, TK key, TV defaultValue = default) => dict.TryGetValue(key, out TV value) ? value : defaultValue;
+        
         public static T TryOrDefault<U, T>(this U u, Func<U, T> f)
         {
             try
